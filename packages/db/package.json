@@ -8,6 +8,9 @@
   "scripts": {
     "clean": "rm -rf .turbo node_modules",
     "lint": "eslint .",
+    "migrations:generate": "drizzle-kit generate:pg",
+    "migrations:push": "drizzle-kit push:pg",
+    "migrations:drop": "drizzle-kit drop --confing=drizzle.config.ts",
     "format": "prettier --check . --ignore-path ../../.gitignore",
     "push": "drizzle-kit push:mysql",
     "studio": "drizzle-kit studio",

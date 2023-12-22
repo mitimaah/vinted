@@ -1,8 +1,5 @@
-import { drizzle } from "drizzle-orm/postgres-js";
-import postgres from "postgres";
+export * from "drizzle-orm";
+export * as db from "./supabase/db";
+export * as schema from "./supabase/schema";
+export { pgTable as tableCreator } from "./supabase/_table";
 
-const connectionString = process.env.DATABASE_URL;
-const client = postgres(connectionString);
-const db = drizzle(client);
-
-export default db;

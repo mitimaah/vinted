@@ -21,3 +21,4 @@ export const categories = pgTable("categories", {
   parent_category: text("parent_category"),
   description: text("description"),
 });
+

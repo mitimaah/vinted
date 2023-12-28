@@ -4,22 +4,16 @@ import { desc, eq, schema } from "@acme/db";
 
 import { createTRPCRouter, protectedProcedure, publicProcedure } from "../trpc";
 
-export const postRouter = createTRPCRouter({
+export const productRouter = createTRPCRouter({
   all: publicProcedure.query(({ ctx }) => {
-    // return ctx.db.select().from(schema.post).orderBy(desc(schema.post.id));
-    return ctx.db.query.findMany({ orderBy: desc(schema.products.id) });
+    return ctx.db.query.product.findMany({ orderBy: desc(schema.product.id) });
   }),
 
   byId: publicProcedure
     .input(z.object({ id: z.number() }))
     .query(({ ctx, input }) => {
-      // return ctx.db
-      //   .select()
-      //   .from(schema.post)
-      //   .where(eq(schema.post.id, input.id));
-
-      return ctx.db.query.post.findFirst({
-        where: eq(schema.post.id, input.id),
+      return ctx.db.query.product.findFirst({
+        where: eq(schema.product.id, input.id),
       });
     }),
 
@@ -31,10 +25,23 @@ export const postRouter = createTRPCRouter({
       }),
     )
     .mutation(({ ctx, input }) => {
-      return ctx.db.insert(schema.post).values(input);
+      return ctx.db.insert(schema.product).values(input);
     }),
 
   delete: protectedProcedure.input(z.number()).mutation(({ ctx, input }) => {
-    return ctx.db.delete(schema.post).where(eq(schema.post.id, input));
+    return ctx.db.delete(schema.product).where(eq(schema.product.id, input));
   }),
+
+  modify: protectedProcedure.input(z.object({
+    id: z.number(),
+    name: z.string(),
+    description: z.string(),
+  })).mutation(({ ctx, input }) => {
+    return ctx.db.update(schema.product).set(
+      {
+        name: input.name,
+        description: input.description,
+      }
+    ).where(eq(schema.product.id, input.id))
+  })
 });

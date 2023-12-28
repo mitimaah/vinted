@@ -4,8 +4,8 @@ import { AuthShowcase } from "./_components/auth-showcase";
 import {
   CreatePostForm,
   PostCardSkeleton,
-  PostList,
-} from "./_components/posts";
+  ProductList,
+} from "./_components/product";
 
 export default function HomePage() {
   return (
@@ -27,7 +27,7 @@ export default function HomePage() {
               </div>
             }
           >
-            <PostList />
+            <ProductList />
           </Suspense>
         </div>
       </div>

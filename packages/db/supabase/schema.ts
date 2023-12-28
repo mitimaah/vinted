@@ -1,12 +1,12 @@
 import { integer, pgTable, serial, text} from "drizzle-orm/pg-core";
 
-export const users = pgTable("users", {
+export const user = pgTable("users", {
   id: serial("id").primaryKey(),
   name: text("name"),
   email: text("email"),
 });
 
-export const products = pgTable("products", {
+export const product = pgTable("products", {
   id: serial("id").primaryKey(),
   name: text("name"),
   image_url: text("image_url"),
@@ -14,7 +14,7 @@ export const products = pgTable("products", {
   description: text("description"),
 });
 
-export const categories = pgTable("categories", {
+export const category = pgTable("categories", {
   id: serial("id").primaryKey(),
   name: text("name"),
   image_url: text("image_url"),

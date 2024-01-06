@@ -8,6 +8,13 @@
       "when": 1702574025782,
       "tag": "0000_pink_pepper_potts",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1703803454547,
+      "tag": "0001_quick_gargoyle",
+      "breakpoints": true
     }
   ]
 }
